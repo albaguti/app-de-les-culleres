@@ -30,12 +30,13 @@ st.divider()
 # Activitats durant el dia
 st.markdown('### <u>Que tal ha anat el dia?</u>', unsafe_allow_html=True )
 
-hores_treballades = st.slider('Quantes hores has treballat?', min_value=0, max_value=12)
+hores_treballades = st.slider('Quantes hores has treballat?', min_value=0.0, max_value=12.0, step=0.2)
 
 cites = st.selectbox('Quantes cites has tingut avui?', [0,1,2,3,4,5])
 
 nens = st.radio('Has tingut els nens avui?', ('Si', 'No'))
 
+benestar = st.multiselect("Que has fet per trobar-te millor?", ("Res", "Banyar-me", "Esport", "Passejar", "Comprar", "Hobbies"))
 st.divider()
 
 # Estat general al final del dia
@@ -55,7 +56,8 @@ st.markdown(f":office_worker: **Hores treballades:** {hores_treballades}")
 st.markdown(f":rage: **Hores cites:** {cites}")
 
 st.markdown(f":woman-girl-girl: **Nens?** {nens}")
+st.markdown(f":massage: **Que has fet per trobar-te millor?** {benestar}")
 st.markdown(f'**Així doncs en general et trobes:** {estat}')
 
 if st.button("Salva els resultats"):
-    save_data(avui.date(), hores_treballades, cites, nens, hores_de_son, qualitat, estat, despertat )
+    save_data(avui, hores_treballades, cites, nens, hores_de_son, qualitat, estat, despertat, benestar )
