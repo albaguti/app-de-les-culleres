@@ -9,6 +9,11 @@ try:
 except locale.Error:
    print("Locale not found.")
 
+st.set_page_config(
+   page_title="App de les culleres",
+   page_icon="culleres.ico",
+)
+
 
 st.header("App de les culleres", divider='rainbow')
 avui = datetime.datetime.now()
